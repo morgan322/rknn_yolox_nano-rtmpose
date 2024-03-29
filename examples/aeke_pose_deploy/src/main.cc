@@ -45,22 +45,7 @@ int main(int argc, char **argv) {
   frame.width = src_img.cols; // 列
   frame.height = src_img.rows;
   frame.orig_img = src_img;
-  frame.in_type = InputType::kImagergb;
 
-  // frame.width = 480;
-  // frame.height = 640;
-  // std::vector<char> buffer = getyuv((std::string)vedio_name);
-  // frame.orig_img = convertYUVtoJpg(static_cast<void *>(buffer.data()),
-  //                                  frame.width, frame.height, buffer.size());
-  // cv::imwrite("nature.jpg",frame.orig_img);                           
-  // int center_x = frame.width / 2;
-  // int center_y = frame.height / 2;
-  // cv::Mat rotation_matrix =
-  //     cv::getRotationMatrix2D(cv::Point(center_x, center_y), -90, 1.0);
-  // cv::warpAffine(frame.orig_img, frame.orig_img, rotation_matrix,
-  //                cv::Size(frame.height, frame.width));
-
-  // cv::imwrite("warpAffine.jpg",frame.orig_img);
 
   int frames = 0;
   struct timeval time;
@@ -88,13 +73,6 @@ int main(int argc, char **argv) {
       obj.rect.height =
           frame.DetectiontRects[i].bottom - frame.DetectiontRects[i].top;
       obj.prob = frame.DetectiontRects[i].prop;
-      // printf("(%d,%d,%d,%d)\t",frame.DetectiontRects[i].left, frame.DetectiontRects[i].top,frame.DetectiontRects[i].right, frame.DetectiontRects[i].bottom);
-      // cv::rectangle(
-			// 	src_img,
-			// 	cv::Point(frame.DetectiontRects[i].left, frame.DetectiontRects[i].top),
-			// 	cv::Point(frame.DetectiontRects[i].right, frame.DetectiontRects[i].bottom),
-			// 	cv::Scalar{ 255, 0, 0 },
-			// 	2);
       obj.label = 0;
       objects.push_back(obj);
     }
